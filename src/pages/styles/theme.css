@@ -1,0 +1,28 @@
+:root {
+  --bg1_rgb: 25, 26, 31;
+  --dark1: rgb(var(--bg1_rgb));
+  --dark2: #202128;
+  --dark3: #272830;
+  --brand: #009688;
+  --brand_hover: #2bbbad;
+  --white: #fff;
+  --gray1: #8a8c99;
+  --gray2: #dadce5;
+  --gray3: #edeef2;
+
+  --gray4: #414141;
+  --gray5: #a5a5a5;
+
+  --aquamarine: #63f2d9;
+  --pink: #f2637c;
+  --pink_hover: #ff6f88;
+  --amber: #f2d963;
+
+  --chek: #3cbe8a;
+
+  --font: Montserrat;
+
+  --transition: 0.3s ease-in-out;
+
+  --radius: 13px;
+}
