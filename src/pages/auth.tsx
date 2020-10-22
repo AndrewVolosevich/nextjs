@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Layout from "../components/layout";
 import SignIn from "../components/sign-in";
 import Grid from "@material-ui/core/Grid";
@@ -23,16 +23,16 @@ function Copyright() {
 }
 
 export default function Home() {
-  const [isSignin, setIsSignin] = useState(true);
+  const [isSignIn, setIsSignIn] = useState(true);
 
   return (
     <Layout>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        {isSignin ? <SignIn /> : <SignUp onSignUp={() => setIsSignin(true)} />}
+        {isSignIn ? <SignIn /> : <SignUp onSignUp={() => setIsSignIn(true)} />}
         <Grid container>
           <Grid item xs>
-            {isSignin ? (
+            {isSignIn ? (
               <Link
                 href="#"
                 variant="body2"
@@ -43,13 +43,13 @@ export default function Home() {
             ) : null}
           </Grid>
           <Grid item>
-            {isSignin ? (
+            {isSignIn ? (
               <Link
                 href="#"
                 variant="body2"
                 onClick={(e) => {
                   e.preventDefault();
-                  setIsSignin(false);
+                  setIsSignIn(false);
                 }}
               >
                 {"Нет аккаунта? Зарегистрируйтесь"}
@@ -60,7 +60,7 @@ export default function Home() {
                 variant="body2"
                 onClick={(e) => {
                   e.preventDefault();
-                  setIsSignin(true);
+                  setIsSignIn(true);
                 }}
               >
                 {"Уже есть аккаунт? Войдите"}

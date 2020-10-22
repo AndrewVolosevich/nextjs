@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
@@ -13,6 +13,7 @@ import {
   validateEmail,
   validatePassword,
 } from "../../helpers/validation";
+import { MessageType } from "../../types/material";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={8} variant="filled" {...props} />;
@@ -66,7 +67,7 @@ export default function SignUp({ onSignUp }: { onSignUp: () => void }) {
     setConfirm({ value: e.target.value, error: " " });
   };
 
-  const [message, setMessage] = useState({
+  const [message, setMessage] = useState<MessageType>({
     type: "success",
     duration: 5000,
     text: "Все хорошо",
@@ -84,7 +85,7 @@ export default function SignUp({ onSignUp }: { onSignUp: () => void }) {
         password: password.value,
         confirm: confirm.value,
       })
-      .then((resp) => {
+      .then(() => {
         setIsLoading(false);
         onSignUp();
         return;
@@ -114,7 +115,7 @@ export default function SignUp({ onSignUp }: { onSignUp: () => void }) {
       </Typography>
       <form className={classes.form} noValidate>
         <TextField
-          error={email.error === " " ? false : true}
+          error={email.error !== " "}
           helperText={email.error}
           variant="outlined"
           margin="normal"
@@ -132,7 +133,7 @@ export default function SignUp({ onSignUp }: { onSignUp: () => void }) {
           autoFocus
         />
         <TextField
-          error={password.error === " " ? false : true}
+          error={password.error !== " "}
           helperText={password.error}
           variant="outlined"
           margin="normal"
@@ -152,7 +153,7 @@ export default function SignUp({ onSignUp }: { onSignUp: () => void }) {
           }
         />
         <TextField
-          error={confirm.error === " " ? false : true}
+          error={confirm.error !== " "}
           helperText={confirm.error}
           variant="outlined"
           margin="normal"

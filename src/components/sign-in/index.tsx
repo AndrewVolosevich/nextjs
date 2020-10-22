@@ -12,6 +12,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
 import { useRouter } from "next/router";
 import { validateEmail, validatePassword } from "../../helpers/validation";
+import { MessageType } from "../../types/material";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={8} variant="filled" {...props} />;
@@ -49,11 +50,13 @@ export default function SignIn() {
     value: "",
     error: " ",
   });
-  const [message, setMessage] = useState({
+
+  const [message, setMessage] = useState<MessageType>({
     type: "success",
     duration: 5000,
     text: "Все хорошо",
   });
+
   const [showMessage, setShowMessage] = useState(false);
   const handleClose = () => {
     setShowMessage(false);
@@ -73,7 +76,7 @@ export default function SignIn() {
     setIsLoading(true);
     api
       .login({ email: email.value, password: password.value })
-      .then((resp) => {
+      .then(() => {
         setIsLoading(false);
 
         router.push("/");
@@ -103,7 +106,7 @@ export default function SignIn() {
       </Typography>
       <form className={classes.form} noValidate>
         <TextField
-          error={email.error === " " ? false : true}
+          error={email.error !== " "}
           helperText={email.error}
           margin="normal"
           variant="outlined"
@@ -121,7 +124,7 @@ export default function SignIn() {
           autoFocus
         />
         <TextField
-          error={password.error === " " ? false : true}
+          error={password.error !== " "}
           helperText={password.error}
           margin="normal"
           variant="outlined"
