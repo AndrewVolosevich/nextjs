@@ -29,7 +29,7 @@ export default function Home() {
     <Layout>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        {isSignin ? <SignIn /> : <SignUp />}
+        {isSignin ? <SignIn /> : <SignUp onSignUp={() => setIsSignin(true)} />}
         <Grid container>
           <Grid item xs>
             {isSignin ? (
