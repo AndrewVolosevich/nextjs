@@ -13,6 +13,8 @@ import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
 import { useRouter } from "next/router";
 import { validateEmail, validatePassword } from "../../helpers/validation";
 import { MessageType } from "../../types/material";
+import { userStore } from "../../stores";
+import { observer } from "mobx-react";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={8} variant="filled" {...props} />;
@@ -38,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+const SignIn = () => {
   const router = useRouter();
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false);
@@ -76,10 +78,12 @@ export default function SignIn() {
     setIsLoading(true);
     api
       .login({ email: email.value, password: password.value })
-      .then(() => {
+      .then((res) => {
         setIsLoading(false);
 
         router.push("/");
+        const { token, userId } = res.data;
+        userStore.login({ userId, token });
       })
       .catch((e) => {
         if (typeof e.response.data !== undefined) {
@@ -180,4 +184,6 @@ export default function SignIn() {
       </Snackbar>
     </div>
   );
-}
+};
+
+export default observer(SignIn);

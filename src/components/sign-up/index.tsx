@@ -101,7 +101,6 @@ export default function SignUp({ onSignUp }: { onSignUp: () => void }) {
           setIsLoading(false);
           return;
         }
-        console.log(e);
       });
   };
 

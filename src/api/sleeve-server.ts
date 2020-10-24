@@ -10,6 +10,17 @@ export default {
       },
     });
   },
+  info: (token) => {
+    return axios.post(
+      `${apiServer}/api/auth/info`,
+      { token },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  },
   register: (userData) => {
     return axios.post(`${apiServer}/api/auth/register`, userData, {
       headers: {

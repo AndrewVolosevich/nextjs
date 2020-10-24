@@ -3,6 +3,7 @@ import NavBar from "../navbar";
 import { createMuiTheme } from "@material-ui/core/styles";
 import teal from "@material-ui/core/colors/teal";
 import deepOrange from "@material-ui/core/colors/deepOrange";
+import React from "react";
 
 const theme = createMuiTheme({
   palette: {

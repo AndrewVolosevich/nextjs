@@ -10,7 +10,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import MenuIcon from "@material-ui/icons/Menu";
 import IconButton from "@material-ui/core/IconButton";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import { staticMenuItems } from "../../consts/menu-items";
+import { getMenuItems } from "../../consts/menu-items";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -66,7 +66,7 @@ export default function Drawer() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {Object.values(staticMenuItems).map((item, index) => (
+        {Object.values(getMenuItems()).map((item, index) => (
           <ListItem
             button
             key={index}
